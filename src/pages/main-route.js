@@ -2,7 +2,7 @@ import api from "@/services/api";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 
-export default function Home({ data }) {
+export default function Main({ data, date }) {
   const [pokemons, setPokemons] = useState(data || []);
 
   return (
@@ -18,7 +18,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   async function loadPokemons() {
     try {
       const response = await api.get("/pokemon");
@@ -36,5 +36,6 @@ export async function getServerSideProps(context) {
       data: pokemons,
       date: Date(),
     },
+    revalidate: 20,
   };
 }
