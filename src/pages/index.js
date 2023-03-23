@@ -2,7 +2,7 @@ import api from "@/services/api";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 
-export default function Home({ data }) {
+export default function Home({ data, date }) {
   const [pokemons, setPokemons] = useState(data || []);
 
   return (
